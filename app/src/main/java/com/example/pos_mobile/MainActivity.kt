@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pos_mobile.ui.screens.DashboardScreen
-import com.example.pos_mobile.ui.theme.POS_MobileTheme
+import com.example.pos_mobile.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
