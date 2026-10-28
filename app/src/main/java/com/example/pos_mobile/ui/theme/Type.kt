@@ -1,33 +1,22 @@
 package com.example.pos_mobile.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.googlefonts.GoogleFont
-import androidx.compose.ui.text.googlefonts.R
-
-val provider = GoogleFont.Provider(
-    providerAuthority = "com.google.android.gms.fonts",
-    providerPackage = "com.google.android.gms",
-    certificates = R.array.com_google_android_gms_fonts_certs
-)
-
-val SoraFont = GoogleFont("Sora")
-val RobotoFont = GoogleFont("Roboto")
+import com.example.pos_mobile.R
 
 val SoraFontFamily = FontFamily(
-    Font(googleFont = SoraFont, fontProvider = provider, weight = FontWeight.Normal),
-    Font(googleFont = SoraFont, fontProvider = provider, weight = FontWeight.Medium),
-    Font(googleFont = SoraFont, fontProvider = provider, weight = FontWeight.SemiBold),
-    Font(googleFont = SoraFont, fontProvider = provider, weight = FontWeight.Bold)
+    Font(R.font.sora, FontWeight.Normal),
+    Font(R.font.sora_medium, FontWeight.Medium),
+    Font(R.font.sora_semibold, FontWeight.SemiBold),
+    Font(R.font.sora_bold, FontWeight.Bold)
 )
 
 val RobotoFontFamily = FontFamily(
-    Font(googleFont = RobotoFont, fontProvider = provider, weight = FontWeight.Normal),
-    Font(googleFont = RobotoFont, fontProvider = provider, weight = FontWeight.Medium),
-    Font(googleFont = RobotoFont, fontProvider = provider, weight = FontWeight.SemiBold),
-    Font(googleFont = RobotoFont, fontProvider = provider, weight = FontWeight.Bold)
+    Font(R.font.roboto, FontWeight.Normal),
+    Font(R.font.roboto_medium, FontWeight.Medium),
+    Font(R.font.roboto_bold, FontWeight.Bold)
 )
 
 private val defaultTypography = Typography()

@@ -21,6 +21,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.ui.theme.AppTheme
 
 /**
  * Reusable PIN / OTP Input Boxes.
@@ -86,7 +87,7 @@ fun PinInput(
 @Preview(name = "Pin Input Preview", showBackground = true)
 @Composable
 fun PinInputPreview() {
-    MaterialTheme {
+    AppTheme {
         Surface(modifier = Modifier.padding(16.dp)) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 PinInput(code = "3GD9", onCodeChange = {}, length = 4)
