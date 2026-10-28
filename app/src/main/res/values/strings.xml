@@ -3,4 +3,37 @@
     <string name="wifi_status_online">En línea</string>
     <string name="wifi_status_offline">Sin conexión</string>
     <string name="wifi_status_connecting">Conectando…</string>
+
+    <!-- File Upload Card -->
+    <string name="file_upload_title">Selecciona una imagen</string>
+    <string name="file_upload_subtitle">JPEG, PNG y PDF (hasta 50 MB)</string>
+    <string name="file_upload_uploading">Subiendo archivo…</string>
+
+    <!-- Media -->
+    <string name="edit_image">Editar imagen</string>
+
+    <!-- Indicators & Pills -->
+    <string name="movement_sale">Venta</string>
+    <string name="movement_restock">Restock</string>
+    <string name="movement_transfer">Transferencia</string>
+    <string name="paid">Pagado</string>
+    <string name="pending">Pendiente</string>
+    <string name="step_completed">Paso %1$d completado</string>
+    <string name="movement_transfer_description">Transferencia</string>
+
+    <!-- Navigation -->
+    <string name="sales_mode">Modo Ventas</string>
+    <string name="nav_home">Inicio</string>
+
+    <!-- Interactive -->
+    <string name="copy_text">Copiar texto</string>
+    <string name="collapse">Colapsar</string>
+    <string name="expand">Expandir</string>
+
+    <!-- Inputs -->
+    <string name="password">Contraseña</string>
+    <string name="show_password">Mostrar contraseña</string>
+    <string name="hide_password">Ocultar contraseña</string>
+    <string name="amount_received">Monto recibido</string>
+    <string name="insufficient_amount">Monto insuficiente</string>
 </resources>

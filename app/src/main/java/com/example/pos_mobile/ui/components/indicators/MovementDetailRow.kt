@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -91,7 +92,7 @@ fun MovementDetailRow(
 
         Icon(
             painter = painterResource(id = R.drawable.triple_forward_icon),
-            contentDescription = "Transferencia",
+            contentDescription = stringResource(R.string.movement_transfer_description),
             tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier
                 .size(22.dp)
@@ -173,5 +174,3 @@ fun MovementDetailRowPreview() {
         }
     }
 }
-
-

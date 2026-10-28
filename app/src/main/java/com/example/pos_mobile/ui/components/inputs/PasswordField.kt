@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
@@ -18,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -35,7 +35,7 @@ fun PasswordField(
     isPasswordVisible: Boolean,
     onTogglePasswordVisibility: () -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Contraseña",
+    label: String = stringResource(R.string.password),
     enabled: Boolean = true
 ) {
     OutlinedTextField(
@@ -49,7 +49,7 @@ fun PasswordField(
             IconButton(onClick = onTogglePasswordVisibility) {
                 Icon(
                     imageVector = if (isPasswordVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                    contentDescription = if (isPasswordVisible) "Ocultar contraseña" else "Mostrar contraseña"
+                    contentDescription = if (isPasswordVisible) stringResource(R.string.hide_password) else stringResource(R.string.show_password)
                 )
             }
         },

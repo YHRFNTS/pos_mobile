@@ -13,10 +13,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
 
 /**
  * Reusable Price Input field (e.g. "Monto recibido" + "$10" + "monto insuficiente").
@@ -26,10 +28,10 @@ fun PriceInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Monto recibido",
+    label: String = stringResource(R.string.amount_received),
     currencySymbol: String = "$",
     isError: Boolean = false,
-    errorMessage: String? = "monto insuficiente",
+    errorMessage: String? = stringResource(R.string.insufficient_amount),
     enabled: Boolean = true
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
@@ -40,11 +42,11 @@ fun PriceInput(
             prefix = {
                 Text(
                     text = currencySymbol,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onSurface
                 )
             },
+            textStyle = MaterialTheme.typography.titleLarge,
             isError = isError,
             enabled = enabled,
             singleLine = true,

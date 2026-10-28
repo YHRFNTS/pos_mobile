@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,7 +54,7 @@ fun MovementTypePill(
             textColor = MaterialTheme.colorScheme.onSurfaceVariant,
             iconTint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.22f),
             border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
-            label = "Venta"
+            label = stringResource(R.string.movement_sale)
         )
         MovementType.Restock -> PillStyle(
             iconRes = R.drawable.box_add_filled,
@@ -61,7 +62,7 @@ fun MovementTypePill(
             textColor = MaterialTheme.colorScheme.onPrimaryContainer,
             iconTint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.22f),
             border = null,
-            label = "Restock"
+            label = stringResource(R.string.movement_restock)
         )
         MovementType.Transferencia -> PillStyle(
             iconRes = R.drawable.transfer_icon_outline,
@@ -69,7 +70,7 @@ fun MovementTypePill(
             textColor = MaterialTheme.colorScheme.onSecondaryContainer,
             iconTint = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.22f),
             border = null,
-            label = "Transferencia"
+            label = stringResource(R.string.movement_transfer)
         )
     }
 
@@ -115,4 +116,3 @@ fun MovementTypePillPreview() {
         }
     }
 }
-

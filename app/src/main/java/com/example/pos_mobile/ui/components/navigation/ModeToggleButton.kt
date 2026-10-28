@@ -20,7 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
 import com.example.pos_mobile.ui.theme.Variables
 
 @Composable
@@ -115,7 +117,7 @@ fun ModeToggleButton(
             ) {
                 Icon(
                     imageVector = Icons.Default.ShoppingCart,
-                    contentDescription = "Modo Ventas",
+                    contentDescription = stringResource(R.string.sales_mode),
                     tint = if (!isDashboardSelected) Color(0xFF65558F) else Color(0xFF79747E),
                     modifier = Modifier.size(20.dp)
                 )

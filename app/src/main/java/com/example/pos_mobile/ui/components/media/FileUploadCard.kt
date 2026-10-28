@@ -28,9 +28,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
 
 enum class FileUploadState {
     Default,
@@ -47,9 +49,9 @@ fun FileUploadCard(
     state: FileUploadState,
     onFileSelect: () -> Unit,
     modifier: Modifier = Modifier,
-    title: String = "Selecciona una imagen",
-    subtitle: String = "JPEG, PNG y PDF (hasta 50 MB)",
-    uploadingText: String = "Subiendo archivo..."
+    title: String = stringResource(R.string.file_upload_title),
+    subtitle: String = stringResource(R.string.file_upload_subtitle),
+    uploadingText: String = stringResource(R.string.file_upload_uploading)
 ) {
     val backgroundColor = when (state) {
         FileUploadState.Default -> MaterialTheme.colorScheme.surface
