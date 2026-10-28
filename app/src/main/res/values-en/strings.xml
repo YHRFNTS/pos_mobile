@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">POS_Mobile</string>
+    <string name="wifi_status_online">Online</string>
+    <string name="wifi_status_offline">Offline</string>
+    <string name="wifi_status_connecting">Connecting…</string>
+
+    <!-- File Upload Card -->
+    <string name="file_upload_title">Select an image</string>
+    <string name="file_upload_subtitle">JPEG, PNG and PDF (up to 50 MB)</string>
+    <string name="file_upload_uploading">Uploading file…</string>
+
+    <!-- Media -->
+    <string name="edit_image">Edit image</string>
+
+    <!-- Indicators & Pills -->
+    <string name="movement_sale">Sale</string>
+    <string name="movement_restock">Restock</string>
+    <string name="movement_transfer">Transfer</string>
+    <string name="paid">Paid</string>
+    <string name="pending">Pending</string>
+    <string name="step_completed">Step %1$d completed</string>
+    <string name="movement_transfer_description">Transfer</string>
+
+    <!-- Navigation -->
+    <string name="sales_mode">Sales Mode</string>
+    <string name="nav_home">Home</string>
+
+    <!-- Interactive -->
+    <string name="copy_text">Copy text</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
+
+    <!-- Inputs -->
+    <string name="password">Password</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="amount_received">Amount received</string>
+    <string name="insufficient_amount">Insufficient amount</string>
+</resources>
