@@ -1,6 +1,7 @@
 package com.example.pos_mobile.ui.components.buttons
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -46,7 +47,7 @@ fun ToggleDropdownButton(
 fun ToggleDropdownButtonPreview() {
     MaterialTheme {
         Surface(modifier = Modifier.padding(16.dp)) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 ToggleDropdownButton(text = "Configuración", isExpanded = false, onToggle = {}, variant = ButtonVariant.Secondary)
                 ToggleDropdownButton(text = "Configuración", isExpanded = true, onToggle = {}, variant = ButtonVariant.Primary)
             }

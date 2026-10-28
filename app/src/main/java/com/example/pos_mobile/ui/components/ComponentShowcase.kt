@@ -277,7 +277,7 @@ fun ComponentShowcase(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        PriceBadge(price = "$10", discountPrice = "$30", originalPrice = "$100")
+                        PriceBadge(price = "$10", originalPrice = "$100")
                         WifiMarker(isOnline = true)
                     }
 
@@ -309,9 +309,9 @@ fun ComponentShowcase(
 
                     Text("Movement Detail", style = MaterialTheme.typography.titleSmall)
                     MovementDetailRow(
-                        originBranch = "Sucursal centro",
+                        originWarehouse = "Sucursal centro",
                         originQuantity = "-50",
-                        destinationBranch = "Sucursal sur",
+                        destinationWarehouse = "Sucursal sur",
                         destinationQuantity = "+50"
                     )
 

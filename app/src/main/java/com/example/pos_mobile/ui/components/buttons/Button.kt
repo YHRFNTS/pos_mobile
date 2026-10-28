@@ -2,6 +2,7 @@ package com.example.pos_mobile.ui.components.buttons
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -110,12 +111,15 @@ fun ButtonPreview() {
     MaterialTheme {
         Surface(modifier = Modifier.padding(16.dp)) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+                Text("Enabled Buttons", style = MaterialTheme.typography.titleLarge)
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Secondary)
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Primary)
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Outlined)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Disabled Buttons", style = MaterialTheme.typography.titleLarge)
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Secondary, enabled = false)
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Primary, enabled = false)
                     Button(text = "Configuración", onClick = {}, leadingIcon = Icons.Default.Settings, variant = ButtonVariant.Outlined, enabled = false)

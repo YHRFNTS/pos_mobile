@@ -26,28 +26,27 @@ fun PaidPill(
     if (isPaid) {
         Surface(
             modifier = modifier,
-            shape = RoundedCornerShape(12.dp),
-            color = Color(0xFFD0E1FD),
-            contentColor = Color(0xFF1565C0)
+            shape = MaterialTheme.shapes.small,
+            color = MaterialTheme.colorScheme.secondaryContainer,
+            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
         ) {
             Text(
                 text = "Pagado",
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 2.dp)
             )
         }
     } else {
         Surface(
             modifier = modifier,
-            shape = RoundedCornerShape(12.dp),
+            shape = MaterialTheme.shapes.small,
             color = Color.Transparent,
             contentColor = MaterialTheme.colorScheme.outline
         ) {
             Box(
                 modifier = Modifier
-                    .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(12.dp))
-                    .padding(horizontal = 12.dp, vertical = 6.dp)
+                    .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.small)
+                    .padding(horizontal = 12.dp, vertical = 2.dp)
             ) {
                 Text(
                     text = "Pendiente",
@@ -66,6 +65,7 @@ fun PaidPillPreview() {
         Surface(modifier = Modifier.padding(16.dp)) {
             Row {
                 PaidPill(isPaid = true)
+                PaidPill(isPaid = false)
             }
         }
     }

@@ -1,16 +1,17 @@
 package com.example.pos_mobile.ui.components.indicators
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -21,37 +22,40 @@ import androidx.compose.ui.unit.dp
 fun PriceBadge(
     price: String,
     modifier: Modifier = Modifier,
-    discountPrice: String? = null,
     originalPrice: String? = null
 ) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.spacedBy(6.dp)
-    ) {
-        Text(
-            text = price,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSurface
-        )
-        if (discountPrice != null) {
-            Text(
-                text = discountPrice,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
+    val annotatedText = buildAnnotatedString {
+        withStyle(
+            SpanStyle(
+                fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
             )
+        ) {
+            append(price)
         }
         if (originalPrice != null) {
-            Text(
-                text = originalPrice,
-                style = MaterialTheme.typography.bodyMedium,
-                textDecoration = TextDecoration.LineThrough,
-                color = MaterialTheme.colorScheme.outline
-            )
+            append(" ")
+            withStyle(
+                SpanStyle(
+                    fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+                    fontSize = MaterialTheme.typography.bodyMedium.fontSize,
+                    color = MaterialTheme.colorScheme.outline,
+                    textDecoration = TextDecoration.LineThrough,
+                    baselineShift = BaselineShift.Subscript
+                )
+            ) {
+                append(originalPrice)
+            }
         }
     }
+
+    Text(
+        text = annotatedText,
+        modifier = modifier,
+        style = MaterialTheme.typography.titleLarge,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.onSurface
+    )
 }
 
 @Preview(name = "Price Badge Preview", showBackground = true)
@@ -59,7 +63,7 @@ fun PriceBadge(
 fun PriceBadgePreview() {
     MaterialTheme {
         Surface(modifier = Modifier.padding(16.dp)) {
-            PriceBadge(price = "$10", discountPrice = "$30", originalPrice = "$100")
+            PriceBadge(price = "$10",originalPrice = "$100")
         }
     }
 }

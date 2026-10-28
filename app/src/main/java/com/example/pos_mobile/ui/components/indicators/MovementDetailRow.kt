@@ -1,13 +1,14 @@
 package com.example.pos_mobile.ui.components.indicators
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.CompareArrows
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,71 +17,125 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
+import com.example.pos_mobile.ui.theme.ExtendedColorScheme
+import com.example.pos_mobile.ui.theme.extendedColorScheme
 
 /**
  * Reusable Movement Detail Item (Branch transfer row: Origin -> Arrow -> Destination).
  */
 @Composable
 fun MovementDetailRow(
-    originBranch: String?,
+    originWarehouse: String?,
     originQuantity: String?,
-    destinationBranch: String?,
+    destinationWarehouse: String?,
     destinationQuantity: String?,
     modifier: Modifier = Modifier
 ) {
+    val hasOrigin = !originWarehouse.isNullOrBlank() || !originQuantity.isNullOrBlank()
+    val hasDestination = !destinationWarehouse.isNullOrBlank() || !destinationQuantity.isNullOrBlank()
+
     Row(
-        modifier = modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 9.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.weight(1f)
-        ) {
-            Text(
-                text = originBranch ?: "---",
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Medium
-            )
-            if (originQuantity != null) {
+        if (hasOrigin) {
+            Row(
+                modifier = Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                if (!originWarehouse.isNullOrBlank()) {
+                    Text(
+                        text = originWarehouse,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontWeight = FontWeight.Normal,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+                } else {
+                    Spacer(modifier = Modifier.weight(1f))
+                }
+
+                if (!originQuantity.isNullOrBlank()) {
+                    Text(
+                        text = originQuantity,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(start = 6.dp)
+                    )
+                }
+            }
+        } else {
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
                 Text(
-                    text = originQuantity,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFD32F2F)
+                    text = "---",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
                 )
             }
         }
 
         Icon(
-            imageVector = Icons.AutoMirrored.Filled.CompareArrows,
+            painter = painterResource(id = R.drawable.triple_forward_icon),
             contentDescription = "Transferencia",
             tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .size(28.dp)
+                .size(22.dp)
         )
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.weight(1f)
-        ) {
-            if (destinationQuantity != null) {
+        if (hasDestination) {
+            Row(
+                modifier = Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                if (!destinationQuantity.isNullOrBlank()) {
+                    Text(
+                        text = destinationQuantity,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.extendedColorScheme.sucess.color,
+                        modifier = Modifier.padding(end = 6.dp)
+                    )
+                }
+
+                if (!destinationWarehouse.isNullOrBlank()) {
+                    Text(
+                        text = destinationWarehouse,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+                } else {
+                    Spacer(modifier = Modifier.weight(1f))
+                }
+            }
+        } else {
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
                 Text(
-                    text = destinationQuantity,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF388E3C)
+                    text = "---",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
                 )
             }
-            Text(
-                text = destinationBranch ?: "---",
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Medium
-            )
         }
     }
 }
@@ -89,13 +144,34 @@ fun MovementDetailRow(
 @Composable
 fun MovementDetailRowPreview() {
     MaterialTheme {
-        Surface(modifier = Modifier.padding(16.dp)) {
-            MovementDetailRow(
-                originBranch = "Sucursal centro",
-                originQuantity = "-50",
-                destinationBranch = "Sucursal sur",
-                destinationQuantity = "+50"
-            )
+        Surface(modifier = Modifier.padding(16.dp).width(230.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                // Entry (No origin)
+                MovementDetailRow(
+                    originWarehouse = null,
+                    originQuantity = null,
+                    destinationWarehouse = "Sucursal sur",
+                    destinationQuantity = "+50"
+                )
+
+                // Exit (No destination)
+                MovementDetailRow(
+                    originWarehouse = "Sucursal centro",
+                    originQuantity = "-50",
+                    destinationWarehouse = null,
+                    destinationQuantity = null
+                )
+
+                // Transfer (Both present)
+                MovementDetailRow(
+                    originWarehouse = "Sucursal centro",
+                    originQuantity = "-50",
+                    destinationWarehouse = "Sucursal sur",
+                    destinationQuantity = "+50"
+                )
+            }
         }
     }
 }
+
+

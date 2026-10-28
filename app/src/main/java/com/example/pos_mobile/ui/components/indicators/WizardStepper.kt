@@ -2,6 +2,7 @@ package com.example.pos_mobile.ui.components.indicators
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.ui.theme.AppTheme
+import com.example.pos_mobile.ui.theme.extendedColorScheme
 
 /**
  * Reusable Wizard Stepper / Step Progress Indicator.
@@ -44,44 +47,52 @@ fun WizardStepper(
 
             Box(
                 modifier = Modifier
-                    .size(28.dp)
+                    .size(36.dp)
                     .clip(CircleShape)
                     .background(
-                        when {
-                            isCompleted -> Color(0xFF4CAF50)
-                            isCurrent -> MaterialTheme.colorScheme.primary
-                            else -> MaterialTheme.colorScheme.surfaceContainerHigh
-                        }
+                        if (isCurrent) MaterialTheme.colorScheme.surfaceContainerHighest else Color.Transparent
                     )
                     .then(
                         if (onStepClick != null) Modifier.clickable { onStepClick(i) } else Modifier
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                if (isCompleted) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = "Paso $i completado",
-                        tint = Color.White,
-                        modifier = Modifier.size(16.dp)
-                    )
-                } else {
-                    Text(
-                        text = i.toString(),
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = if (isCurrent) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                Box(
+                    modifier = Modifier
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .background(
+                            when {
+                                isCompleted -> MaterialTheme.extendedColorScheme.sucess.color
+                                isCurrent -> MaterialTheme.colorScheme.secondary
+                                else -> MaterialTheme.colorScheme.surfaceContainerHigh
+                            }
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (isCompleted) {
+                        Icon(
+                            imageVector = Icons.Default.Check,
+                            contentDescription = "Paso $i completado",
+                            tint = Color.White,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    } else {
+                        Text(
+                            text = i.toString(),
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = if (isCurrent) FontWeight.Bold else FontWeight.Normal,
+                            color = if (isCurrent) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
 
             if (i < totalSteps) {
                 HorizontalDivider(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 4.dp),
+                    modifier = Modifier.weight(1f),
                     thickness = 2.dp,
-                    color = if (i < currentStep) Color(0xFF4CAF50) else MaterialTheme.colorScheme.outlineVariant
+                    color = if (i < currentStep) MaterialTheme.extendedColorScheme.sucess.color else MaterialTheme.colorScheme.surfaceContainerHighest
                 )
             }
         }
@@ -91,9 +102,12 @@ fun WizardStepper(
 @Preview(name = "Wizard Stepper Preview", showBackground = true)
 @Composable
 fun WizardStepperPreview() {
-    MaterialTheme {
+    AppTheme(dynamicColor = false) {
         Surface(modifier = Modifier.padding(16.dp)) {
-            Column {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                WizardStepper(totalSteps = 4, currentStep = 1)
                 WizardStepper(totalSteps = 4, currentStep = 2)
             }
         }
