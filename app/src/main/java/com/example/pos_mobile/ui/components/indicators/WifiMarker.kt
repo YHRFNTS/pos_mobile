@@ -1,6 +1,5 @@
 package com.example.pos_mobile.ui.components.indicators
 
-import androidx.compose.animation.VectorConverter
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pos_mobile.R
+import com.example.pos_mobile.ui.components.text.JumpingDotsText
 import com.example.pos_mobile.ui.theme.AppTheme
 
 /**
@@ -122,20 +122,23 @@ fun WifiMarker(
             modifier = Modifier
                 .size(20.dp)
                 .graphicsLayer {
-                    this.alpha = alpha
                     this.scaleX = scale
                     this.scaleY = scale
                 }
         )
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.Medium,
-            color = textColor,
-            modifier = Modifier.graphicsLayer {
-                this.alpha = if (state == WifiState.CONNECTING) alpha else 1.0f
-            }
-        )
+        if (state == WifiState.CONNECTING) {
+            JumpingDotsText(
+                text = text,
+                style = MaterialTheme.typography.bodyMedium,
+                color = textColor
+            )
+        } else {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyMedium,
+                color = textColor
+            )
+        }
     }
 }
 

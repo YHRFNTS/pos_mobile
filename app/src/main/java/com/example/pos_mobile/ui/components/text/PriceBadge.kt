@@ -1,4 +1,4 @@
-package com.example.pos_mobile.ui.components.indicators
+package com.example.pos_mobile.ui.components.text
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme

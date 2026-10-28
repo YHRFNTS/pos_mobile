@@ -15,13 +15,22 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+
+fun Color.contrastingContentColor(
+    darkContent: Color = Color(0xFF1D1B20), // Negro suave de Material 3
+    lightContent: Color = Color.White
+): Color {
+    return if (this.luminance() > 0.5f) darkContent else lightContent
+}
 
 /**
  * Reusable Color Swatch selection component.
@@ -41,6 +50,8 @@ fun ColorSwatch(
     ) {
         colors.forEach { color ->
             val isSelected = color == selectedColor
+            val checkColor = color.contrastingContentColor()
+
             Box(
                 modifier = Modifier
                     .size(28.dp)
@@ -50,7 +61,7 @@ fun ColorSwatch(
                         if (isSelected) {
                             Modifier.border(
                                 width = 2.dp,
-                                color = MaterialTheme.colorScheme.primary,
+                                color = MaterialTheme.colorScheme.outline,
                                 shape = RoundedCornerShape(6.dp)
                             )
                         } else Modifier
@@ -62,7 +73,7 @@ fun ColorSwatch(
                     Icon(
                         imageVector = Icons.Default.Check,
                         contentDescription = "Seleccionado",
-                        tint = if (color == Color.Yellow || color == Color.White) Color.Black else Color.White,
+                        tint = checkColor,
                         modifier = Modifier.size(16.dp)
                     )
                 }

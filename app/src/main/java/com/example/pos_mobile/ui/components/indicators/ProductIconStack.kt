@@ -1,7 +1,7 @@
 package com.example.pos_mobile.ui.components.indicators
 
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,30 +26,39 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pos_mobile.R
-import java.io.File
+
+/**
+ * Data model representing a product image source.
+ * Can be loaded from a [Painter], a drawable resource ID ([imageRes]), a pre-loaded [ImageBitmap], or a local file [path].
+ */
+data class ProductImage(
+    val painter: Painter? = null,
+    @DrawableRes val imageRes: Int? = null,
+    val bitmap: ImageBitmap? = null,
+    val path: String? = null
+)
 
 /**
  * Reusable Product Icon Stack with 0 to 2 product image circles and Overflow badge (+X).
- * Supports local DB images (file paths, Bitmaps, ImageBitmaps, painters, or drawable IDs).
+ * Supports loading images via optional painter, imageRes, bitmap, or local file path via [ProductImage].
  * Clickable element with ripple effect.
  */
 @Composable
 fun ProductIconStack(
     modifier: Modifier = Modifier,
-    productImages: List<Any?> = emptyList(),
+    productImages: List<ProductImage> = emptyList(),
     totalCount: Int? = null,
     overflowCount: Int = 0,
     onClick: (() -> Unit)? = null
 ) {
     val visibleImages = if (productImages.isEmpty()) {
-        listOf<Any?>(null)
+        listOf<ProductImage?>(null)
     } else {
         productImages.take(2)
     }
@@ -92,8 +101,12 @@ fun ProductIconStack(
 
 @Composable
 private fun ProductImageItem(
-    image: Any?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    painter: Painter? = null,
+    @DrawableRes imageRes: Int? = null,
+    bitmap: ImageBitmap? = null,
+    path: String? = null,
+    image: ProductImage? = null
 ) {
     Box(
         modifier = modifier
@@ -102,59 +115,34 @@ private fun ProductImageItem(
             .background(MaterialTheme.colorScheme.primaryContainer),
         contentAlignment = Alignment.Center
     ) {
-        val bitmap = remember(image) {
-            when (image) {
-                is String -> BitmapFactory.decodeFile(image)?.asImageBitmap()
-                is File -> BitmapFactory.decodeFile(image.absolutePath)?.asImageBitmap()
-                else -> null
-            }
+        val loadedBitmap = remember(image?.path ?: path) {
+            val filePath = image?.path ?: path
+            filePath?.let { BitmapFactory.decodeFile(it)?.asImageBitmap() }
         }
 
+        val resolvedPainter = when {
+            painter != null -> painter
+            imageRes != null -> painterResource(id = imageRes)
+            image?.painter != null -> image.painter
+            image?.imageRes != null -> painterResource(id = image.imageRes)
+            else -> null
+        }
+
+        val resolvedBitmap = bitmap ?: image?.bitmap ?: loadedBitmap
+
         when {
-            image is ImageBitmap -> {
+            resolvedPainter != null -> {
                 Image(
-                    bitmap = image,
-                    contentDescription = "Producto",
+                    painter = resolvedPainter,
+                    contentDescription = stringResource(R.string.product_image_description),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
             }
-            image is ImageVector -> {
+            resolvedBitmap != null -> {
                 Image(
-                    imageVector = image,
-                    contentDescription = "Producto",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            image is Painter -> {
-                Image(
-                    painter = image,
-                    contentDescription = "Producto",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            image is Int -> {
-                Image(
-                    painter = painterResource(id = image),
-                    contentDescription = "Producto",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            image is Bitmap -> {
-                Image(
-                    bitmap = image.asImageBitmap(),
-                    contentDescription = "Producto",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            bitmap != null -> {
-                Image(
-                    bitmap = bitmap,
-                    contentDescription = "Producto",
+                    bitmap = resolvedBitmap,
+                    contentDescription = stringResource(R.string.product_image_description),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -162,7 +150,7 @@ private fun ProductImageItem(
             else -> {
                 Icon(
                     painter = painterResource(id = R.drawable.cube_filled),
-                    contentDescription = "Producto placeholder",
+                    contentDescription = stringResource(R.string.product_placeholder_description),
                     tint = MaterialTheme.colorScheme.onPrimaryContainer,
                     modifier = Modifier.size(20.dp)
                 )
@@ -182,20 +170,23 @@ fun ProductIconStackPreview() {
                     onClick = {}
                 )
                 ProductIconStack(
-                    productImages = listOf(R.drawable.cube_filled),
+                    productImages = listOf(ProductImage(imageRes = R.drawable.cube_filled)),
                     onClick = {}
                 )
 
                 ProductIconStack(
-                    productImages = listOf(R.drawable.cube_filled, R.drawable.cube_outlined),
+                    productImages = listOf(
+                        ProductImage(imageRes = R.drawable.cube_filled),
+                        ProductImage(imageRes = R.drawable.cube_outlined)
+                    ),
                     onClick = {}
                 )
                 ProductIconStack(
                     productImages = listOf(
-                        R.drawable.cube_filled,
-                        R.drawable.cube_outlined,
-                        R.drawable.cube_filled,
-                        R.drawable.cube_outlined
+                        ProductImage(imageRes = R.drawable.cube_filled),
+                        ProductImage(imageRes = R.drawable.cube_outlined),
+                        ProductImage(imageRes = R.drawable.cube_filled),
+                        ProductImage(imageRes = R.drawable.cube_outlined)
                     ),
                     onClick = {}
                 )
@@ -203,4 +194,3 @@ fun ProductIconStackPreview() {
         }
     }
 }
-

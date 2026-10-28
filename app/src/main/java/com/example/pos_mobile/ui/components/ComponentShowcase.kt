@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CardGiftcard
-import androidx.compose.material.icons.filled.Money
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
@@ -32,10 +31,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
 import com.example.pos_mobile.ui.components.buttons.Button
 import com.example.pos_mobile.ui.components.buttons.ButtonVariant
 import com.example.pos_mobile.ui.components.buttons.IconButton
@@ -46,7 +48,8 @@ import com.example.pos_mobile.ui.components.indicators.MovementDetailRow
 import com.example.pos_mobile.ui.components.indicators.MovementType
 import com.example.pos_mobile.ui.components.indicators.MovementTypePill
 import com.example.pos_mobile.ui.components.indicators.PaidPill
-import com.example.pos_mobile.ui.components.indicators.PriceBadge
+import com.example.pos_mobile.ui.components.text.ListDetailsLine
+import com.example.pos_mobile.ui.components.text.PriceBadge
 import com.example.pos_mobile.ui.components.indicators.ProductIconStack
 import com.example.pos_mobile.ui.components.indicators.WifiMarker
 import com.example.pos_mobile.ui.components.indicators.WizardStepper
@@ -224,7 +227,7 @@ fun ComponentShowcase(
                     Text("Vertical Payment Method Toggle", style = MaterialTheme.typography.titleSmall)
                     VerticalPaymentToggle(
                         label = "Efectivo",
-                        icon = Icons.Default.Money,
+                        icon = ImageVector.vectorResource(id = R.drawable.cash_icon),
                         selected = isPaymentSelected,
                         onClick = { isPaymentSelected = !isPaymentSelected }
                     )
@@ -281,6 +284,11 @@ fun ComponentShowcase(
                         WifiMarker(isOnline = true)
                     }
 
+                    ListDetailsLine(
+                        label = "Subtotal",
+                        value = "$100.12"
+                    )
+
                     HorizontalDivider()
 
                     Text("Pills & Status", style = MaterialTheme.typography.titleSmall)
@@ -288,9 +296,9 @@ fun ComponentShowcase(
                         PaidPill(isPaid = true)
                         PaidPill(isPaid = false)
                         IndicatorPill(label = "Activo", isActive = true)
-                        CategoryPill(label = "Papelería", containerColor = Color(0xFFFFECB3), contentColor = Color(0xFF5D4037))
-                        CategoryPill(label = "Manualidades", containerColor = Color(0xFFF8BBD0), contentColor = Color(0xFF880E4F))
-                        CategoryPill(label = "Snacks", containerColor = Color(0xFFFFCCBC), contentColor = Color(0xFFBF360C))
+                        CategoryPill(label = "Papelería", containerColor = Color(0xFFFFDF7A), contentColor = Color(0xFF423200))
+                        CategoryPill(label = "Manualidades", containerColor = Color(0xFFEA8DF7), contentColor = Color(0xFF6B007B))
+                        CategoryPill(label = "Snacks", containerColor = Color(0xFFF79997), contentColor = Color(0xFF800010))
                     }
 
                     Text("Movement Types", style = MaterialTheme.typography.titleSmall)

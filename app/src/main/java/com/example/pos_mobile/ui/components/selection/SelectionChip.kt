@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.ui.theme.AppTheme
 
 /**
  * Reusable Selection Chip component.
@@ -36,6 +37,12 @@ fun SelectionChip(
         label = { Text(text = label) },
         modifier = modifier,
         enabled = enabled,
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = MaterialTheme.colorScheme.secondary,
+            selectedLabelColor = MaterialTheme.colorScheme.onSecondary,
+            selectedLeadingIconColor = MaterialTheme.colorScheme.onSecondary,
+            selectedTrailingIconColor = MaterialTheme.colorScheme.onSecondary,
+        ),
         leadingIcon = if (selected && showCheckmark) {
             {
                 Icon(
@@ -51,7 +58,7 @@ fun SelectionChip(
 @Preview(name = "Selection Chip Preview", showBackground = true)
 @Composable
 fun SelectionChipPreview() {
-    MaterialTheme {
+    AppTheme(dynamicColor = false) {
         Surface(modifier = Modifier.padding(16.dp)) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 SelectionChip(label = "Madera", selected = false, onClick = {})

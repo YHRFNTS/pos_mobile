@@ -6,8 +6,8 @@
 
     <!-- File Upload Card -->
     <string name="file_upload_title">Selecciona una imagen</string>
-    <string name="file_upload_subtitle">JPEG, PNG y PDF (hasta 50 MB)</string>
-    <string name="file_upload_uploading">Subiendo archivo…</string>
+    <string name="file_upload_subtitle">JPEG, PNG y PDF (hasta 50 MB).</string>
+    <string name="file_upload_uploading">Subiendo archivo...</string>
 
     <!-- Media -->
     <string name="edit_image">Editar imagen</string>
@@ -20,6 +20,8 @@
     <string name="pending">Pendiente</string>
     <string name="step_completed">Paso %1$d completado</string>
     <string name="movement_transfer_description">Transferencia</string>
+    <string name="product_image_description">Imagen del producto</string>
+    <string name="product_placeholder_description">Icono de producto por defecto</string>
 
     <!-- Navigation -->
     <string name="sales_mode">Modo Ventas</string>
@@ -29,6 +31,9 @@
     <string name="copy_text">Copiar texto</string>
     <string name="collapse">Colapsar</string>
     <string name="expand">Expandir</string>
+    <string name="remove_filter">Quitar filtro</string>
+    <string name="filter_name_label">Nombre</string>
+    <string name="sample_person_name">Carlos Emanuel Salgado</string>
 
     <!-- Inputs -->
     <string name="password">Contraseña</string>
@@ -36,4 +41,49 @@
     <string name="hide_password">Ocultar contraseña</string>
     <string name="amount_received">Monto recibido</string>
     <string name="insufficient_amount">Monto insuficiente</string>
+
+    <!-- Category Colors -->
+    <string name="category_color_red">Rojo</string>
+    <string name="category_color_orange">Naranja</string>
+    <string name="category_color_amber">Ámbar</string>
+    <string name="category_color_green">Verde</string>
+    <string name="category_color_teal">Turquesa</string>
+    <string name="category_color_cyan">Celeste</string>
+    <string name="category_color_blue">Azul</string>
+    <string name="category_color_indigo">Índigo</string>
+    <string name="category_color_purple">Morado</string>
+    <string name="category_color_pink">Rosa</string>
+    <string name="category_color_brown">Café</string>
+    <string name="category_color_slate">Gris</string>
+
+    <!-- Category Icons / Tags -->
+    <string name="category_icon_restaurant">Comida</string>
+    <string name="category_icon_fast_food">Snacks</string>
+    <string name="category_icon_pizza">Pizza</string>
+    <string name="category_icon_bakery">Panadería</string>
+    <string name="category_icon_dessert">Postres</string>
+    <string name="category_icon_coffee">Cafetería</string>
+    <string name="category_icon_drinks">Bebidas</string>
+    <string name="category_icon_groceries">Abarrotes</string>
+    <string name="category_icon_fresh">Frescos</string>
+    <string name="category_icon_dairy">Refrigerados</string>
+    <string name="category_icon_cleaning">Limpieza</string>
+    <string name="category_icon_clothing">Ropa</string>
+    <string name="category_icon_accessories">Accesorios</string>
+    <string name="category_icon_gifts">Regalos</string>
+    <string name="category_icon_stationery">Papelería</string>
+    <string name="category_icon_pharmacy">Salud</string>
+    <string name="category_icon_beauty">Belleza</string>
+    <string name="category_icon_pets">Mascotas</string>
+    <string name="category_icon_hardware">Ferretería</string>
+    <string name="category_icon_electronics">Electrónica</string>
+    <string name="category_icon_services">Servicios</string>
+    <string name="category_icon_promo">Ofertas</string>
+    <string name="category_icon_featured">Destacados</string>
+    <string name="category_icon_default">General</string>
+    <!-- List Details Line -->
+    <string name="list_details_subtotal">Subtotal</string>
+    <string name="list_details_sample_price">$100.12</string>
+    <string name="list_details_title">List details line</string>
 </resources>
+

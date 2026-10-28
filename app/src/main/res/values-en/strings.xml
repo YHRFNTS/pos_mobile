@@ -21,6 +21,8 @@
     <string name="pending">Pending</string>
     <string name="step_completed">Step %1$d completed</string>
     <string name="movement_transfer_description">Transfer</string>
+    <string name="product_image_description">Product image</string>
+    <string name="product_placeholder_description">Default product icon</string>
 
     <!-- Navigation -->
     <string name="sales_mode">Sales Mode</string>
@@ -30,6 +32,9 @@
     <string name="copy_text">Copy text</string>
     <string name="collapse">Collapse</string>
     <string name="expand">Expand</string>
+    <string name="remove_filter">Remove filter</string>
+    <string name="filter_name_label">Name</string>
+    <string name="sample_person_name">Carlos Emanuel Salgado</string>
 
     <!-- Inputs -->
     <string name="password">Password</string>
@@ -37,4 +42,49 @@
     <string name="hide_password">Hide password</string>
     <string name="amount_received">Amount received</string>
     <string name="insufficient_amount">Insufficient amount</string>
+
+    <!-- Category Colors -->
+    <string name="category_color_red">Red</string>
+    <string name="category_color_orange">Orange</string>
+    <string name="category_color_amber">Amber</string>
+    <string name="category_color_green">Green</string>
+    <string name="category_color_teal">Teal</string>
+    <string name="category_color_cyan">Cyan</string>
+    <string name="category_color_blue">Blue</string>
+    <string name="category_color_indigo">Indigo</string>
+    <string name="category_color_purple">Purple</string>
+    <string name="category_color_pink">Pink</string>
+    <string name="category_color_brown">Brown</string>
+    <string name="category_color_slate">Slate</string>
+
+    <!-- Category Icons / Tags -->
+    <string name="category_icon_restaurant">Food</string>
+    <string name="category_icon_fast_food">Snacks</string>
+    <string name="category_icon_pizza">Pizza</string>
+    <string name="category_icon_bakery">Bakery</string>
+    <string name="category_icon_dessert">Desserts</string>
+    <string name="category_icon_coffee">Coffee</string>
+    <string name="category_icon_drinks">Drinks</string>
+    <string name="category_icon_groceries">Groceries</string>
+    <string name="category_icon_fresh">Fresh</string>
+    <string name="category_icon_dairy">Dairy</string>
+    <string name="category_icon_cleaning">Cleaning</string>
+    <string name="category_icon_clothing">Clothing</string>
+    <string name="category_icon_accessories">Accessories</string>
+    <string name="category_icon_gifts">Gifts</string>
+    <string name="category_icon_stationery">Stationery</string>
+    <string name="category_icon_pharmacy">Health</string>
+    <string name="category_icon_beauty">Beauty</string>
+    <string name="category_icon_pets">Pets</string>
+    <string name="category_icon_hardware">Hardware</string>
+    <string name="category_icon_electronics">Electronics</string>
+    <string name="category_icon_services">Services</string>
+    <string name="category_icon_promo">Offers</string>
+    <string name="category_icon_featured">Featured</string>
+    <string name="category_icon_default">General</string>
+    <!-- List Details Line -->
+    <string name="list_details_subtotal">Subtotal</string>
+    <string name="list_details_sample_price">$100.12</string>
+    <string name="list_details_title">List details line</string>
 </resources>
+
