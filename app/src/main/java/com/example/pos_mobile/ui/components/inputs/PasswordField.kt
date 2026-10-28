@@ -17,11 +17,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pos_mobile.R
 
 /**
  * Reusable Password Field with Lock Icon & Toggle Eye Visibility.
@@ -41,7 +43,7 @@ fun PasswordField(
         onValueChange = onValueChange,
         label = { Text(label) },
         leadingIcon = {
-            Icon(imageVector = Icons.Default.Lock, contentDescription = null)
+            Icon(painter = painterResource(R.drawable.lock_filled), contentDescription = null)
         },
         trailingIcon = {
             IconButton(onClick = onTogglePasswordVisibility) {

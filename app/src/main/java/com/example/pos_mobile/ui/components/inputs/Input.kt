@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
  * Reusable Standard Outlined Input TextField.
  */
 @Composable
-fun OutlinedInput(
+fun Input(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
@@ -34,18 +34,18 @@ fun OutlinedInput(
         isError = isError,
         enabled = enabled,
         singleLine = true,
-        shape = RoundedCornerShape(12.dp),
+        shape = MaterialTheme.shapes.medium,
         modifier = modifier.fillMaxWidth()
     )
 }
 
 @Preview(name = "Outlined Input Preview", showBackground = true)
 @Composable
-fun OutlinedInputPreview() {
+fun InputPreview() {
     MaterialTheme {
         Surface(modifier = Modifier.padding(16.dp)) {
             Column {
-                OutlinedInput(value = "Input text", onValueChange = {}, label = "Label")
+                Input(value = "Input text", onValueChange = {}, label = "Label")
             }
         }
     }

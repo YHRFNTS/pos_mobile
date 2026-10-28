@@ -53,7 +53,7 @@ fun PinInput(
                     if (groupSeparated && (i == halfLength) && (i > 0)) {
                         Text(
                             text = "-",
-                            style = MaterialTheme.typography.titleLarge,
+                            style = MaterialTheme.typography.headlineMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
@@ -72,8 +72,7 @@ fun PinInput(
                     ) {
                         Text(
                             text = char,
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.headlineMedium,
                             color = MaterialTheme.colorScheme.onSurface,
                             textAlign = TextAlign.Center
                         )

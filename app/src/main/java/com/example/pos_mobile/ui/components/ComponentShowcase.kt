@@ -51,7 +51,7 @@ import com.example.pos_mobile.ui.components.indicators.ProductIconStack
 import com.example.pos_mobile.ui.components.indicators.WifiMarker
 import com.example.pos_mobile.ui.components.indicators.WizardStepper
 import com.example.pos_mobile.ui.components.inputs.CheckboxOption
-import com.example.pos_mobile.ui.components.inputs.OutlinedInput
+import com.example.pos_mobile.ui.components.inputs.Input
 import com.example.pos_mobile.ui.components.inputs.PasswordField
 import com.example.pos_mobile.ui.components.inputs.PinInput
 import com.example.pos_mobile.ui.components.inputs.PriceInput
@@ -234,7 +234,7 @@ fun ComponentShowcase(
             // Section 3: Inputs & Form
             ShowcaseCard(title = "Inputs & Form Fields") {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    OutlinedInput(
+                    Input(
                         value = textInputValue,
                         onValueChange = { textInputValue = it },
                         label = "Label"
